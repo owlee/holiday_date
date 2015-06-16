@@ -18,6 +18,24 @@
   </thead>
 
   <tbody>
+  <div id="main-container" class="container">
+    <div class="row">
+      <% @holiday_dates.each do |holiday_date| %>
+
+      <div class="col-xs-3">
+
+      </div>
+
+      <div class="col-xs-9">
+        <td><%= holiday_date.holiday.name %></td>
+        <td><%= holiday_date.calendar_date.date.to_s %></td>
+        <td><%= link_to 'Show', holiday_date %></td>
+        <td><%= link_to 'Edit', edit_holiday_date_path(holiday_date) %></td>
+      </div>
+    </div>
+  </div>
+
+
     <% @holiday_dates.each do |holiday_date| %>
       <tr>
         <td><%= holiday_date.holiday.name %></td>
@@ -33,3 +51,14 @@
 <br>
 
 <%= link_to 'New Holiday date', new_holiday_date_path %>
+<!--
+    <% @holiday_dates.each do |holiday_date| %>
+      <tr>
+        <td><%= holiday_date.holiday.name %></td>
+        <td><%= holiday_date.calendar_date.date.to_s %></td>
+        <td><%= link_to 'Show', holiday_date %></td>
+        <td><%= link_to 'Edit', edit_holiday_date_path(holiday_date) %></td>
+        <!--<td><%= link_to 'Destroy', holiday_date, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+-->
