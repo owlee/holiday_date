@@ -33,7 +33,7 @@ puts "Finished Adding Country Codes into Countries"
 #puts "Adding days up to 30 years from 1/1/2015"
 
 i_date = Date.new(2015,1,1)
-f_date = Date.new(2020,1,1)
+f_date = Date.new(2045,1,1)
 i_year = i_date.year
 f_year = f_date.year
 

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :calendar_dates
   resources :countries
   resources :holidays
+
+  root 'holiday_dates#index' 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
