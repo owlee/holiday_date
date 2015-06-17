@@ -1,14 +1,18 @@
+<!-- app/views/layouts/application.html.erb -->
+
 <!DOCTYPE html>
 <html>
-<head>
-  <title>HolidayCal</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <body>
+    <div id="main-container" class="container">
+      <div class="row">
+      	<%= yield %>
+        <div id="sidebar" class="col-xs-3">
+          <!-- sidebar content -->
+        </div>
+        <div id="content" class="col-xs-9">
+          <!--  main content -->
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
