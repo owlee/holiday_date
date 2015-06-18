@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   resources :countries
   resources :holidays
 
-  root 'holiday_dates#index' 
+  root 'holiday_dates#index'
+  get 'holiday_dates_path' => 'holiday_dates#index'
+  get 'calendar_dates_path' => 'calendar_dates#index'
+  get 'countries_path' => 'countries#index'
+  get 'holidays_path' => 'holidays#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

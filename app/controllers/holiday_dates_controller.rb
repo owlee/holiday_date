@@ -8,14 +8,19 @@ class HolidayDatesController < ApplicationController
     @calendar_dates = CalendarDate.all
     @countries = Country.all
 
+    boy = Date.new(Date.today.year.to_i)
+    eoy = boy.end_of_year
+    c = Country.first.id
+
     if params[:set_country] && params[:set_year]
       c = params[:set_country]
       y = params[:set_year]
       boy = Date.new(y.to_i)
       eoy = boy.end_of_year
-      filter_cal = CalendarDate.where("date >= ? and date <= ?", boy, eoy).all
-      @holiday_dates = HolidayDate.where("country_id = ? and calendar_date_id >= ? and calendar_date_id <= ?", c, filter_cal.first.id, filter_cal.last.id)
     end
+
+    filter_cal = CalendarDate.where("date >= ? and date <= ?", boy, eoy).all
+    @holiday_dates = HolidayDate.where("country_id = ? and calendar_date_id >= ? and calendar_date_id <= ?", c, filter_cal.first.id, filter_cal.last.id)
   end
 
   # GET /holiday_dates/1
