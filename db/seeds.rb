@@ -23,7 +23,7 @@
 Country.delete_all
 
 countries = ["US", "BE", "BR", "GB", "NO"]
-x
+
 puts "Adding Country Codes into Countries"
 countries.each do |c|
 	Country.where(name: c ).first_or_create
