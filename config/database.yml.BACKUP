@@ -26,5 +26,5 @@ production:
   adapter: postgresql
   encoding: unicode
   database: db/production_postgresql
-  username:
+  username: owlee
   password:
