@@ -130,6 +130,7 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    searchbing (0.2.4)
     spring (1.3.6)
     sprockets (3.2.0)
       rack (~> 1.0)
@@ -171,6 +172,7 @@ DEPENDENCIES
   rails_12factor
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  searchbing
   spring
   sqlite3
   turbolinks

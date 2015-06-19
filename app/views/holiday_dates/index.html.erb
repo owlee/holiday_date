@@ -8,19 +8,24 @@
   <%= submit_tag 'submit' %>
 <% end %>
 
-<table>
+<table class ="table">
   <thead>
     <tr>
       <th>Holiday</th>
+      <th>Description</th>
       <th>Calendar date</th>
+      <th>Image</th>
     </tr>
   </thead>
 
   <tbody>
     <% @holiday_dates.each do |holiday_date| %>
       <tr>
-        <td><%= holiday_date.holiday.name %></td>
+        <td><img src= <%= holiday_date.get_image(holiday_date.holiday.name) %>.to_s alt= <%=  holiday_date.holiday.name%> style="width:100px;height:100px;"><%= holiday_date.holiday.name %></td>
         <td><%= holiday_date.calendar_date.date.to_s %></td>
+        <td>
+
+        </td>
         <td><%= link_to 'Show', holiday_date %></td>
         <td><%= link_to 'Edit', edit_holiday_date_path(holiday_date)%></td>
         <!--<td><%= link_to 'Destroy', holiday_date, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
