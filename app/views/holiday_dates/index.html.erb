@@ -2,6 +2,7 @@
 
 <h1>Holiday Dates in <strong><%= @calendar_dates.find(@holiday_dates.first.calendar_date_id).date.year %></strong> for <strong><%=@countries.find(@holiday_dates.first.country_id).name %></strong></h1>
 
+<%=  will_paginate @holiday_dates %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -35,6 +36,7 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @holiday_dates %>
 
 <br>
 

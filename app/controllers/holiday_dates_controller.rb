@@ -20,7 +20,9 @@ class HolidayDatesController < ApplicationController
     end
 
     filter_cal = CalendarDate.where("date >= ? and date <= ?", boy, eoy).all
-    @holiday_dates = HolidayDate.where("country_id = ? and calendar_date_id >= ? and calendar_date_id <= ?", c, filter_cal.first.id, filter_cal.last.id)
+    
+    # Adding pagination so things will get parsed for display quickly. Will_paginate
+    @holiday_dates = HolidayDate.where("country_id = ? and calendar_date_id >= ? and calendar_date_id <= ?", c, filter_cal.first.id, filter_cal.last.id).paginate(page: params[:page], per_page: 8)
   end
 
   # GET /holiday_dates/1

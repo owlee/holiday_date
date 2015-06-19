@@ -20,6 +20,7 @@ gem 'puma'
 
 gem 'searchbing'
 
+gem 'will_paginate', '~> 3.0'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
