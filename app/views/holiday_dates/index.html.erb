@@ -1,33 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Holiday Dates in <%= @calendar_dates.find(@holiday_dates.first.calendar_date_id).date.year %> for <%=@countries.find(@holiday_dates.first.country_id).name %></h1>
+<h1>Holiday Dates in <strong><%= @calendar_dates.find(@holiday_dates.first.calendar_date_id).date.year %></strong> for <strong><%=@countries.find(@holiday_dates.first.country_id).name %></strong></h1>
 
-<%= form_tag holiday_dates_path, :method => :get, class: 'get_country'  do %>
-  <%= select_tag "set_country", options_from_collection_for_select(@countries, 'id', 'name', selected: params[:set_country])%>
-  <%= select_tag "set_year", options_for_select((@calendar_dates.first.date.year..(@calendar_dates.last.date.year)), selected: params[:set_year]) %>
-  <%= submit_tag 'submit' %>
-<% end %>
-
-<table class ="table">
+<table class="table table-striped">
   <thead>
     <tr>
+      <th>
+        <%= form_tag holiday_dates_path, :method => :get, class: 'get_country'  do %>
+          <%= select_tag "set_country", options_from_collection_for_select(@countries, 'id', 'name', selected: params[:set_country])%>
+          <%= select_tag "set_year", options_for_select((@calendar_dates.first.date.year..(@calendar_dates.last.date.year)), selected: params[:set_year])%>
+          <%= submit_tag 'submit' %>
+       <% end %>
+      </th>
+      <th>Calendar date</th>
       <th>Holiday</th>
       <th>Description</th>
-      <th>Calendar date</th>
-      <th>Image</th>
+      
     </tr>
   </thead>
 
   <tbody>
     <% @holiday_dates.each do |holiday_date| %>
       <tr>
-        <td><img src= <%= holiday_date.get_image(holiday_date.holiday.name) %>.to_s alt= <%=  holiday_date.holiday.name%> style="width:100px;height:100px;"><%= holiday_date.holiday.name %></td>
+        <td><img src= <%= holiday_date.get_image(holiday_date.holiday.name) %> class="img-responsive" alt= <%=  holiday_date.holiday.name%> style="width:100px;height:100px;"></td>
         <td><%= holiday_date.calendar_date.date.to_s %></td>
-        <td>
+        <td><%= holiday_date.holiday.name %></td>
+        <td>  </td>
+        <td><a class="btn btn-primary" type="button" value=<%= link_to 'Show', holiday_date %></a>
 
+            <a class="btn btn-warning" type="button" value=<%= link_to 'Edit', edit_holiday_date_path(holiday_date)%></a>
         </td>
-        <td><%= link_to 'Show', holiday_date %></td>
-        <td><%= link_to 'Edit', edit_holiday_date_path(holiday_date)%></td>
         <!--<td><%= link_to 'Destroy', holiday_date, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
       </tr>
     <% end %>
@@ -36,4 +38,6 @@
 
 <br>
 
-<%= link_to 'New Holiday date', new_holiday_date_path %>
+<%= link_to new_holiday_date_path, class: 'btn btn-success' do %>
+  <i class="glyphicon glyphicon-plus"></i> New Holiday date
+<% end %>
