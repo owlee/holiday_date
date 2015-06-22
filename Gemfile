@@ -9,11 +9,6 @@ gem 'autoprefixer-rails'
 # Use sqlite3 as the database for Active Record in development
 gem 'sqlite3', group: :development
 
-#Adding postgres to production
-gem 'pg', group: :production
-
-gem 'rails_12factor'
-
 ruby "2.2.1"
 
 gem 'puma'
@@ -22,6 +17,7 @@ gem 'searchbing'
 
 gem 'will_paginate', '~> 3.0'
 
+gem 'figaro'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
@@ -48,6 +44,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Unicorn as the app server
 # gem 'unicorn'
+
+group :production do
+  gem 'rails_12factor'
+  
+  #Adding postgres to production
+  gem 'pg'
+end
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

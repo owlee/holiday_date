@@ -4,7 +4,6 @@ class HolidayDatesController < ApplicationController
   # GET /holiday_dates
   # GET /holiday_dates.json
   def index
-    @holiday_dates = HolidayDate.all
     @calendar_dates = CalendarDate.all
     @countries = Country.all
 
@@ -15,14 +14,14 @@ class HolidayDatesController < ApplicationController
     if params[:set_country] && params[:set_year]
       c = params[:set_country]
       y = params[:set_year]
-      boy = Date.new(y.to_i)
+      boy = Date.new(y)
       eoy = boy.end_of_year
     end
 
-    filter_cal = CalendarDate.where("date >= ? and date <= ?", boy, eoy).all
-    
+    filter_cal = CalendarDate.where(date: boy..eoy)
+
     # Adding pagination so things will get parsed for display quickly. Will_paginate
-    @holiday_dates = HolidayDate.where("country_id = ? and calendar_date_id >= ? and calendar_date_id <= ?", c, filter_cal.first.id, filter_cal.last.id).paginate(page: params[:page], per_page: 8)
+    @holiday_dates = HolidayDate.where(country: c).where(calendar_date: filter_cal.first.id..filter_cal.last.id).paginate(page: params[:page], per_page: 8)
   end
 
   # GET /holiday_dates/1
